@@ -41,21 +41,3 @@ for i in range(10):
             break
     
     print(''.join(out))
-
-
-log_likelihood = 0.0
-n = 0
-for w in words:
-    wrapper = ["."] + list(w) + ["."]
-    for ch1, ch2 in zip(wrapper, wrapper[1:]):
-        idx1 = stoi[ch1]
-        idx2 = stoi[ch2]
-
-        prob = P[idx1, idx2]
-        logprob = torch.log(prob)
-        log_likelihood += logprob
-        n+=1
-
-nll = -log_likelihood
-print(f"{nll=}")
-print(f"{nll/n=}")
